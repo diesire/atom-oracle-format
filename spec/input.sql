@@ -1,0 +1,21 @@
+CREATE MATERIALIZED VIEW aaa
+TABLESPACE "bbb" BUILD DEFERRED USING INDEX REFRESH FORCE
+ON DEMAND USING DEFAULT LOCAL ROLLBACK SEGMENT USING ENFORCED CONSTRAINTS ENABLE QUERY REWRITE
+AS
+  SELECT
+    t3.f1 UDATE ,
+    t1.f2 ,
+    t2.f3     AS f3b ,
+    NVL(t3.f4,0) f4b ,
+    CASE
+    WHEN NVL(t3.f4,0)= 1
+    THEN 'aaa'
+    WHEN NVL(t3.f5,0) = 1
+    THEN 'bbb'
+    ELSE 'ccc'
+    END          AS f6 ,
+  FROM t11111111 t1,
+    t2,
+    t3333333 t3
+  WHERE t1.f1 = t3.f2
+  AND t3.f3               = t2.f4   ;
