@@ -5,9 +5,7 @@
   "description": "Quick and dirty SQL formatter using on Oracle Developer Tools",
   "keywords": [
   ],
-  "activationCommands": {
-    "atom-workspace": "atom-oracle-utils:format"
-  },
+  "activationHooks": ["language-sql:grammar-used"],
   "repository": "https://github.com/diesire/atom-oracle-utils",
   "license": "MIT",
   "engines": {
