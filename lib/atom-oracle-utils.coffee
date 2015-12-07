@@ -18,6 +18,7 @@ module.exports = AtomOracleUtils =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-oracle-utils:format': => @format()
+    @subscriptions.add atom.commands.add '.tree-view .file .name[data-name$=\\.sql]', 'atom-oracle-utils:formatFile': ({target}) => @formatFile(target)
 
   deactivate: ->
     @subscriptions.dispose()
@@ -32,10 +33,15 @@ module.exports = AtomOracleUtils =
     file = editor?.getBuffer()?.getPath()
     console.log "file #{file}"
     editor?.getBuffer()?.save()
+    @_formatFile(file, file)
 
-    @formatFile(file, file)
+  formatFile: (target)->
+    console.log target
+    file = target.dataset.path
+    console.log file # Logs the path of the selected item
+    @_formatFile(file, file)
 
-  formatFile: (inputFile, outputFile)->
+  _formatFile: (inputFile, outputFile)->
     # See https://github.com/karan/atom-terminal/blob/master/lib/atom-terminal.coffee
     {BufferedProcess} = require 'atom'
     command = atom.config.get('atom-oracle-utils.sdcliPath')

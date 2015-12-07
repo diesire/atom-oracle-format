@@ -6,6 +6,12 @@
       'command': 'atom-oracle-utils:format'
     }
   ]
+  '.tree-view .file .name[data-name$=\\.sql]': [
+    {
+      'label': 'Format SQL File'
+      'command':  'atom-oracle-utils:formatFile'
+    }
+  ]
 'menu': [
   {
     'label': 'Packages'
