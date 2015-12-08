@@ -1,2 +1,4 @@
-## 0.0.1 - First Release
-* Runs
+## HEAD
+
+## 0.1.0
+* Initial release, functional

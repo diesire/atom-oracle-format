@@ -1,7 +1,7 @@
 {
   "name": "atom-oracle-utils",
   "main": "./lib/atom-oracle-utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Quick and dirty SQL formatter using Oracle Developer Tools CLI",
   "keywords": [],
   "activationCommands": {
