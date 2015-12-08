@@ -1,5 +1,5 @@
 # atom-oracle-utils package
 
-Quick and dirty SQL formatter using on Oracle Developer Tools.
+Quick and dirty SQL formatter using Oracle Developer Tools CLI.
 
 Takes a while... so be patient
