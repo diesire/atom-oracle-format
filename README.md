@@ -2,6 +2,19 @@
 
 Quick and dirty SQL formatter using Oracle SQL Developer
 
+## Installation
+
+With apm:
+
+```
+apm install oracle-format
+```
+
+## Configuration
+
+In the package configuration section, add the path to **sdcli.exe** or **sdcli64.exe**
+![image](https://cloud.githubusercontent.com/assets/1185591/11654841/0a1e77a0-9da9-11e5-8102-f6a47a438e3b.png)
+
 ## Usage
 
 ### Format editor content `alt-ctrl-l`/`alt-cmd-l`
@@ -23,11 +36,6 @@ Quick and dirty SQL formatter using Oracle SQL Developer
 :warning: Formats all the files in the folder, not only `*.sql` files
 
 :rabbit2: This is the most performant option
-
-## Configuration
-
-In the package configuration section, add the path to **sdcli.exe** or **sdcli64.exe**
-![image](https://cloud.githubusercontent.com/assets/1185591/11654841/0a1e77a0-9da9-11e5-8102-f6a47a438e3b.png)
 
 ## Why
 
