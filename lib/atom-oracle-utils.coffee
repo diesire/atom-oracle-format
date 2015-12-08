@@ -19,6 +19,7 @@ module.exports = AtomOracleUtils =
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-oracle-utils:format': => @format()
     @subscriptions.add atom.commands.add '.tree-view .file .name[data-name$=\\.sql]', 'atom-oracle-utils:formatFile': ({target}) => @formatFile(target)
+    @subscriptions.add atom.commands.add '.tree-view .directory .icon-file-directory', 'atom-oracle-utils:formatDir': ({target}) => @formatFile(target)
 
   deactivate: ->
     @subscriptions.dispose()
@@ -36,9 +37,9 @@ module.exports = AtomOracleUtils =
     @_formatFile(file, file)
 
   formatFile: (target)->
-    console.log target
+    console.log 'AtomOracleUtils.formatFile was called!', target
     file = target.dataset.path
-    console.log file # Logs the path of the selected item
+    console.log 'Path: ', file # Logs the path of the selected item
     @_formatFile(file, file)
 
   _formatFile: (inputFile, outputFile)->

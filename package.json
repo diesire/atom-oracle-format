@@ -6,7 +6,10 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "atom-oracle-utils:formatFile"
+    "atom-workspace": [
+      "atom-oracle-utils:formatFile",
+      "atom-oracle-utils:formatDir"
+    ]
   },
   "activationHooks": ["language-sql:grammar-used"],
   "repository": "https://github.com/diesire/atom-oracle-utils",

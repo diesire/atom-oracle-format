@@ -12,6 +12,12 @@
       'command':  'atom-oracle-utils:formatFile'
     }
   ]
+  '.tree-view .directory .icon-file-directory': [
+    {
+      'label': 'Format SQL Folder'
+      'command':  'atom-oracle-utils:formatDir'
+    }
+  ]
 'menu': [
   {
     'label': 'Packages'
