@@ -3,30 +3,30 @@
   'atom-text-editor': [
     {
       'label': 'Format SQL'
-      'command': 'atom-oracle-utils:formatEditor'
+      'command': 'oracle-format:formatEditor'
     }
   ]
   '.tree-view .file .name[data-name$=\\.sql]': [
     {
       'label': 'Format SQL File'
-      'command': 'atom-oracle-utils:formatFile'
+      'command': 'oracle-format:formatFile'
     }
   ]
   '.tree-view .directory .icon-file-directory': [
     {
       'label': 'Format SQL Folder'
-      'command': 'atom-oracle-utils:formatDir'
+      'command': 'oracle-format:formatDir'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'atom-oracle-utils'
+      'label': 'oracle-format'
       'submenu': [
         {
           'label': 'Format SQL'
-          'command': 'atom-oracle-utils:format'
+          'command': 'oracle-format:format'
         }
       ]
     ]

@@ -1,17 +1,17 @@
 {
-  "name": "atom-oracle-utils",
-  "main": "./lib/atom-oracle-utils",
+  "name": "oracle-format",
+  "main": "./lib/oracle-format",
   "version": "0.1.0",
-  "description": "Quick and dirty SQL formatter using Oracle Developer Tools CLI",
+  "description": "Quick and dirty SQL formatter using Oracle SQL Developer",
   "keywords": [],
   "activationCommands": {
     "atom-workspace": [
-      "atom-oracle-utils:formatFile",
-      "atom-oracle-utils:formatDir"
+      "oracle-format:formatFile",
+      "oracle-format:formatDir"
     ]
   },
   "activationHooks": ["language-sql:grammar-used"],
-  "repository": "https://github.com/diesire/atom-oracle-utils",
+  "repository": "https://github.com/diesire/atom-oracle-format",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

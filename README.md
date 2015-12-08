@@ -1,12 +1,12 @@
-# atom-oracle-utils
+# atom-oracle-format
 
-Quick and dirty SQL formatter using Oracle Developer Tools CLI
+Quick and dirty SQL formatter using Oracle SQL Developer
 
 ## Usage
 
 ### Format editor content `alt-ctrl-l`/`alt-cmd-l`
 
-**Format SQL** in package menu or context menu. Only runs in files using SQL grammar.
+**Format SQL** in package menu or context menu. Only runs in files using SQL grammar
 
 :warning: File will be saved before being formatted
 
