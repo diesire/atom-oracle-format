@@ -39,3 +39,7 @@ In the package configuration section, add the path to **sdcli.exe** or **sdcli64
 ## Contributions
 
 Pull requests are welcome, big and small!
+
+## License
+
+MIT © Pablo Escalada
