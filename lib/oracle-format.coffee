@@ -27,7 +27,8 @@ module.exports =
   formatEditor: ->
     console.log 'oracle-format.formatEditor was called!'
     editor = atom.workspace.getActiveTextEditor()
-    if editor.getGrammar().scopeName isnt 'source.sql'
+    console.log editor.getGrammar().scopeName
+    if editor.getGrammar().scopeName not in ['source.sql', 'source.plsql.oracle']
       console.log 'This is not an SQL file'
       return
 
