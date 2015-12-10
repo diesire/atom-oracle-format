@@ -11,7 +11,8 @@
     ]
   },
   "activationHooks": [
-    "language-sql:grammar-used"
+    "language-sql:grammar-used",
+    "language-oracle:grammar-used"
   ],
   "repository": "https://github.com/diesire/atom-oracle-format",
   "license": "MIT",
