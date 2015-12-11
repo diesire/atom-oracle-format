@@ -11,8 +11,6 @@ module.exports =
       default: 'C:\\Program Files (x86)\\Oracle\\Product\\SQLDeveloper\\4.0\\sqldeveloper\\sqldeveloper\\bin\\sdcli.exe'
 
   activate: (state) ->
-    console.log 'Activate oracle-format'
-
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
@@ -25,28 +23,38 @@ module.exports =
     @subscriptions.dispose()
 
   formatEditor: ->
-    console.log 'oracle-format.formatEditor was called!'
     editor = atom.workspace.getActiveTextEditor()
-    console.log editor.getGrammar().scopeName
+    file = editor?.getBuffer()?.getPath()
+
     if editor.getGrammar().scopeName not in ['source.sql', 'source.plsql.oracle']
-      console.log 'This is not an SQL file'
+      atom.notifications.addWarning "This is not an SQL file #{file}"
       return
 
-    file = editor?.getBuffer()?.getPath()
-    console.log "file #{file}"
+    atom.notifications.addInfo("Formatting active editor...")
     editor?.getBuffer()?.save()
     @_format(file, file)
 
   formatPath: (target)->
-    console.log 'oracle-format.formatPath was called!', target
     file = target.dataset.path
-    console.log 'Path: ', file # Logs the path of the selected item
+    atom.notifications.addInfo("Formatting #{file}")
     @_format(file, file)
 
   _format: (inputFile, outputFile)->
     command = atom.config.get('oracle-format.sdcliPath')
-    console.log command
     args = ['format', "input=#{inputFile}", "output=#{outputFile}"]
-    stdout = (output) -> console.log(output)
-    exit = (code) -> console.log("sdcli  with #{code}")
-    process = new BufferedProcess({command, args, stdout, exit})
+    stdout = (output) ->
+      atom.notifications.addSuccess("Format done", {detail: "#{output}"})
+    stderr = (output) ->
+      metadata = {command: command, args: args, output: output}
+      atom.notifications.addError("Format failed", {detail: "#{output}\n💡 More details in Developer Tools console", dismissable:true})
+      console.error("Format failed", metadata)
+    exit = (code) ->
+      console.debug("Format exit with #{code}") unless code is 0
+    handleError = (errorObject) ->
+      metadata = {command: command, args: args, error: errorObject.error}
+      atom.notifications.addFatalError("Format died in agony", {detail: "💡 More details in Developer Tools console", dismissable:true})
+      console.error("Format died in agony", metadata)
+      #errorObject.handle #Keep this commented until be sure...
+
+    process = new BufferedProcess({command, args, stdout, stderr})
+    process.onWillThrowError(handleError)
