@@ -22,23 +22,35 @@ module.exports =
   deactivate: ->
     @subscriptions.dispose()
 
+  # Format the content of the editor
   formatEditor: ->
     editor = atom.workspace.getActiveTextEditor()
-    file = editor?.getBuffer()?.getPath()
+    buffer = editor?.getBuffer()
+    file = buffer?.getPath()
+    title = editor?.getTitle()
 
-    if editor.getGrammar().scopeName not in ['source.sql', 'source.plsql.oracle']
-      atom.notifications.addWarning "This is not an SQL file #{file}"
+    # Check file is saved
+    if title is 'untitled'
+      atom.notifications.addWarning("Save the file before format it")
       return
 
+    # Check supported grammar
+    if editor.getGrammar().scopeName not in ['source.sql', 'source.plsql.oracle']
+      atom.notifications.addWarning("#{title} does not look like an SQL file", {detail: "Select a valid grammar"})
+      return
+
+    # Save modifications and format
     atom.notifications.addInfo("Formatting active editor...")
-    editor?.getBuffer()?.save()
+    buffer.save() if buffer.isModified()
     @_format(file, file)
 
+  # Format a file or folder from the tree view
   formatPath: (target)->
     file = target.dataset.path
-    atom.notifications.addInfo("Formatting #{file}")
+    atom.notifications.addInfo("Formatting #{target.dataset.name}")
     @_format(file, file)
 
+  # Call sdcli to format given path
   _format: (inputFile, outputFile)->
     command = atom.config.get('oracle-format.sdcliPath')
     args = ['format', "input=#{inputFile}", "output=#{outputFile}"]
