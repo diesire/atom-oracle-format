@@ -1,5 +1,9 @@
 # HEAD
 
+## 0.4.0
+
+*   Add notifications support
+
 ## 0.3.0
 
 *   Add plsql.oracle grammar support
