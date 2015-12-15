@@ -6,7 +6,7 @@ Quick and dirty SQL formatter using Oracle SQL Developer
 
 With apm:
 
-```
+```bash
 apm install oracle-format
 ```
 
@@ -39,10 +39,13 @@ In the package configuration section, add the path to **sdcli.exe** or **sdcli64
 
 ## Why
 
-* No hidden dependencies (only Oracle Developer for obvious reasons :wink:)
-  * Under corporate proxy installing packages may be difficult due to network limitations
-  * Need of Python and Visual Studio to install packages (node-gyp errors) its a big restriction in some circumstances
-* Maintain same formatting options throughout the entire code base
+*   No hidden dependencies (only Oracle Developer for obvious reasons :wink:)
+
+    *   Under corporate proxy installing packages may be difficult due to network limitations
+
+    *   Need of Python and Visual Studio to install packages (node-gyp errors) its a big restriction in some circumstances
+
+*   Maintain same formatting options throughout the entire code base
 
 ## Contributions
 
