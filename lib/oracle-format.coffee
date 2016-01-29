@@ -45,26 +45,26 @@ module.exports =
     @_format(file, file)
 
   # Format a file or folder from the tree view
-  formatPath: (target)->
+  formatPath: (target) ->
     file = target.dataset.path
     atom.notifications.addInfo("Formatting #{target.dataset.name}")
     @_format(file, file)
 
   # Call sdcli to format given path
-  _format: (inputFile, outputFile)->
+  _format: (inputFile, outputFile) ->
     command = atom.config.get('oracle-format.sdcliPath')
     args = ['format', "input=#{inputFile}", "output=#{outputFile}"]
     stdout = (output) ->
       atom.notifications.addSuccess("Format done", {detail: "#{output}"})
     stderr = (output) ->
       metadata = {command: command, args: args, output: output}
-      atom.notifications.addError("Format failed", {detail: "#{output}\n💡 More details in Developer Tools console", dismissable:true})
+      atom.notifications.addError("Format failed", {detail: "#{output}\n💡 More details in Developer Tools console", dismissable: true})
       console.error("Format failed", metadata)
     exit = (code) ->
       console.debug("Format exit with #{code}") unless code is 0
     handleError = (errorObject) ->
       metadata = {command: command, args: args, error: errorObject.error}
-      atom.notifications.addFatalError("Format died in agony", {detail: "💡 More details in Developer Tools console", dismissable:true})
+      atom.notifications.addFatalError("Format died in agony", {detail: "💡 More details in Developer Tools console", dismissable: true})
       console.error("Format died in agony", metadata)
       #errorObject.handle #Keep this commented until be sure...
 
